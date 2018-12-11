@@ -1,9 +1,44 @@
 import requests
 import starwars_api.ObjectClasses as ObjectClasses
-import json
 
 
 class StarSearch:
+
+    def complete_object_dict_maker(self):
+        complete_dict = {}
+
+        film_list = self.get_all_resources(0)
+        people_list = self.get_all_resources(1)
+        planet_list = self.get_all_resources(2)
+        species_list = self.get_all_resources(3)
+        starship_list = self.get_all_resources(4)
+        vehicle_list = self.get_all_resources(5)
+
+        for film_entry in film_list:
+            dict_entry = {film_entry["title"]: ObjectClasses.Film(film_entry)}
+            complete_dict.update(dict_entry)
+
+        for person_entry in people_list:
+            dict_entry = {person_entry["name"]: ObjectClasses.Person(person_entry)}
+            complete_dict.update(dict_entry)
+
+        for planet_entry in planet_list:
+            dict_entry = {planet_entry["name"]: ObjectClasses.Planet(planet_entry)}
+            complete_dict.update(dict_entry)
+
+        for species_entry in species_list:
+            dict_entry = {species_entry["name"]: ObjectClasses.Species(species_entry)}
+            complete_dict.update(dict_entry)
+
+        for starship_entry in starship_list:
+            dict_entry = {starship_entry["name"]: ObjectClasses.Starship(starship_entry)}
+            complete_dict.update(dict_entry)
+
+        for vehicle_entry in vehicle_list:
+            dict_entry = {vehicle_entry["name"]: ObjectClasses.Vehicle(vehicle_entry)}
+            complete_dict.update(dict_entry)
+
+        return complete_dict
 
     def get_all_resources(self, resource_index):
         self.__init__()
