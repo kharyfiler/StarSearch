@@ -14,6 +14,8 @@ species_list = []
 starship_list = []
 vehicle_list = []
 
+# Wild Text Totally bad
+
 
 def list_box_categorize(box, filtered_people_list, filtered_films_list, filtered_planets_list,
                         filtered_species_list, filtered_starships_list, filtered_vehicles_list):
