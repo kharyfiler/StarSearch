@@ -3,7 +3,10 @@ import starwars_api.ObjectClasses as ObjectClasses
 
 
 class StarSearch:
+    # todo: run initializer for all methods
+    url_name_dict = {}
 
+    # todo: refactor this method
     def complete_object_dict_maker(self):
         complete_dict = {}
 
@@ -14,29 +17,41 @@ class StarSearch:
         starship_list = self.get_all_resources(4)
         vehicle_list = self.get_all_resources(5)
 
+        print("Completing Films.")
         for film_entry in film_list:
             dict_entry = {film_entry["title"]: ObjectClasses.Film(film_entry)}
             complete_dict.update(dict_entry)
+            self.url_name_dict.update({film_entry["url"]:film_entry["title"]})
 
+        print("Completing People.")
         for person_entry in people_list:
             dict_entry = {person_entry["name"]: ObjectClasses.Person(person_entry)}
             complete_dict.update(dict_entry)
+            self.url_name_dict.update({person_entry["url"]: person_entry["name"]})
 
+        print("Completing Planets.")
         for planet_entry in planet_list:
             dict_entry = {planet_entry["name"]: ObjectClasses.Planet(planet_entry)}
             complete_dict.update(dict_entry)
+            self.url_name_dict.update({planet_entry["url"]: planet_entry["name"]})
 
+        print("Completing Species.")
         for species_entry in species_list:
             dict_entry = {species_entry["name"]: ObjectClasses.Species(species_entry)}
             complete_dict.update(dict_entry)
+            self.url_name_dict.update({species_entry["url"]: species_entry["name"]})
 
+        print("Completing Starships.")
         for starship_entry in starship_list:
             dict_entry = {starship_entry["name"]: ObjectClasses.Starship(starship_entry)}
             complete_dict.update(dict_entry)
+            self.url_name_dict.update({starship_entry["url"]: starship_entry["name"]})
 
+        print("Completing Vehicles.")
         for vehicle_entry in vehicle_list:
             dict_entry = {vehicle_entry["name"]: ObjectClasses.Vehicle(vehicle_entry)}
             complete_dict.update(dict_entry)
+            self.url_name_dict.update({vehicle_entry["url"]: vehicle_entry["name"]})
 
         return complete_dict
 
@@ -81,20 +96,7 @@ class StarSearch:
     # Films
     def create_film_object(self, film_dict):
         self.__init__()
-        film_object = ObjectClasses.Film(1, 1, film_dict[ObjectClasses.film_attributes[0]],
-                                film_dict[ObjectClasses.film_attributes[1]],
-                                film_dict[ObjectClasses.film_attributes[2]],
-                                film_dict[ObjectClasses.film_attributes[3]],
-                                film_dict[ObjectClasses.film_attributes[4]],
-                                film_dict[ObjectClasses.film_attributes[5]],
-                                film_dict[ObjectClasses.film_attributes[6]],
-                                film_dict[ObjectClasses.film_attributes[7]],
-                                film_dict[ObjectClasses.film_attributes[8]],
-                                film_dict[ObjectClasses.film_attributes[9]],
-                                film_dict[ObjectClasses.film_attributes[10]],
-                                film_dict[ObjectClasses.film_attributes[11]],
-                                film_dict[ObjectClasses.film_attributes[12]],
-                                film_dict[ObjectClasses.film_attributes[13]])
+        film_object = ObjectClasses.Film(film_dict)
         return film_object
 
     def get_film_by_title(self, film_title):
@@ -128,22 +130,7 @@ class StarSearch:
     # People
     def create_person_object(self, person_dict):
         self.__init__()
-        person_object = ObjectClasses.Person(1, 1, person_dict[ObjectClasses.person_attributes[0]],
-                                    person_dict[ObjectClasses.person_attributes[1]],
-                                    person_dict[ObjectClasses.person_attributes[2]],
-                                    person_dict[ObjectClasses.person_attributes[3]],
-                                    person_dict[ObjectClasses.person_attributes[4]],
-                                    person_dict[ObjectClasses.person_attributes[5]],
-                                    person_dict[ObjectClasses.person_attributes[6]],
-                                    person_dict[ObjectClasses.person_attributes[7]],
-                                    person_dict[ObjectClasses.person_attributes[8]],
-                                    person_dict[ObjectClasses.person_attributes[9]],
-                                    person_dict[ObjectClasses.person_attributes[10]],
-                                    person_dict[ObjectClasses.person_attributes[11]],
-                                    person_dict[ObjectClasses.person_attributes[12]],
-                                    person_dict[ObjectClasses.person_attributes[13]],
-                                    person_dict[ObjectClasses.person_attributes[14]],
-                                    person_dict[ObjectClasses.person_attributes[15]])
+        person_object = ObjectClasses.Person(person_dict)
         return person_object
 
     def get_person_by_name(self, person_name):
@@ -177,20 +164,7 @@ class StarSearch:
     # Planets
     def create_planet_object(self, planet_dict):
         self.__init__()
-        planet_object = ObjectClasses.Planet(1, 1, planet_dict[ObjectClasses.planet_attributes[0]],
-                                    planet_dict[ObjectClasses.planet_attributes[1]],
-                                    planet_dict[ObjectClasses.planet_attributes[2]],
-                                    planet_dict[ObjectClasses.planet_attributes[3]],
-                                    planet_dict[ObjectClasses.planet_attributes[4]],
-                                    planet_dict[ObjectClasses.planet_attributes[5]],
-                                    planet_dict[ObjectClasses.planet_attributes[6]],
-                                    planet_dict[ObjectClasses.planet_attributes[7]],
-                                    planet_dict[ObjectClasses.planet_attributes[8]],
-                                    planet_dict[ObjectClasses.planet_attributes[9]],
-                                    planet_dict[ObjectClasses.planet_attributes[10]],
-                                    planet_dict[ObjectClasses.planet_attributes[11]],
-                                    planet_dict[ObjectClasses.planet_attributes[12]],
-                                    planet_dict[ObjectClasses.planet_attributes[13]])
+        planet_object = ObjectClasses.Planet(planet_dict)
         return planet_object
 
     def get_planet_by_name(self, planet_name):
@@ -224,21 +198,7 @@ class StarSearch:
     # Species
     def create_species_object(self, species_dict):
         self.__init__()
-        species_object = ObjectClasses.Species(1, 1, species_dict[ObjectClasses.species_attributes[0]],
-                                      species_dict[ObjectClasses.species_attributes[1]],
-                                      species_dict[ObjectClasses.species_attributes[2]],
-                                      species_dict[ObjectClasses.species_attributes[3]],
-                                      species_dict[ObjectClasses.species_attributes[4]],
-                                      species_dict[ObjectClasses.species_attributes[5]],
-                                      species_dict[ObjectClasses.species_attributes[6]],
-                                      species_dict[ObjectClasses.species_attributes[7]],
-                                      species_dict[ObjectClasses.species_attributes[8]],
-                                      species_dict[ObjectClasses.species_attributes[9]],
-                                      species_dict[ObjectClasses.species_attributes[10]],
-                                      species_dict[ObjectClasses.species_attributes[11]],
-                                      species_dict[ObjectClasses.species_attributes[12]],
-                                      species_dict[ObjectClasses.species_attributes[13]],
-                                      species_dict[ObjectClasses.species_attributes[14]])
+        species_object = ObjectClasses.Species(species_dict)
         return species_object
 
     def get_species_by_name(self, species_name):
@@ -272,24 +232,7 @@ class StarSearch:
     # Starships
     def create_starship_object(self, starship_dict):
         self.__init__()
-        starship_object = ObjectClasses.Starship(1, 1, starship_dict[ObjectClasses.starship_attributes[0]],
-                                        starship_dict[ObjectClasses.starship_attributes[1]],
-                                        starship_dict[ObjectClasses.starship_attributes[2]],
-                                        starship_dict[ObjectClasses.starship_attributes[3]],
-                                        starship_dict[ObjectClasses.starship_attributes[4]],
-                                        starship_dict[ObjectClasses.starship_attributes[5]],
-                                        starship_dict[ObjectClasses.starship_attributes[6]],
-                                        starship_dict[ObjectClasses.starship_attributes[7]],
-                                        starship_dict[ObjectClasses.starship_attributes[8]],
-                                        starship_dict[ObjectClasses.starship_attributes[9]],
-                                        starship_dict[ObjectClasses.starship_attributes[10]],
-                                        starship_dict[ObjectClasses.starship_attributes[11]],
-                                        starship_dict[ObjectClasses.starship_attributes[12]],
-                                        starship_dict[ObjectClasses.starship_attributes[13]],
-                                        starship_dict[ObjectClasses.starship_attributes[14]],
-                                        starship_dict[ObjectClasses.starship_attributes[15]],
-                                        starship_dict[ObjectClasses.starship_attributes[16]],
-                                        starship_dict[ObjectClasses.starship_attributes[17]],)
+        starship_object = ObjectClasses.Starship(starship_dict)
         return starship_object
 
     def get_starship_by_name(self, starship_name):
@@ -323,22 +266,7 @@ class StarSearch:
     # Vehicles
     def create_vehicle_object(self, vehicle_dict):
         self.__init__()
-        vehicle_object = ObjectClasses.Vehicle(1, 1, vehicle_dict[ObjectClasses.vehicle_attributes[0]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[1]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[2]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[3]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[4]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[5]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[6]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[7]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[8]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[9]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[10]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[11]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[12]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[13]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[14]],
-                                      vehicle_dict[ObjectClasses.vehicle_attributes[15]])
+        vehicle_object = ObjectClasses.Vehicle(vehicle_dict)
         return vehicle_object
 
     def get_vehicle_by_name(self, vehicle_name):

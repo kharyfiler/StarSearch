@@ -37,7 +37,6 @@ planet_attributes = ["name", "diameter", "rotation_period", "orbital_period", "g
 class Film:
 
     def __init__(self, film_response):
-        print("Building film. " + str(datetime.datetime.now().time()))
 
         self.title = film_response["title"]
         self.episode_id = film_response["episode_id"]
@@ -58,7 +57,6 @@ class Film:
 class Person:
 
     def __init__(self, person_response):
-        print("Building person. " + str(datetime.datetime.now().time()))
 
         self.name = person_response["name"]
         self.birth_year = person_response["birth_year"]
@@ -82,7 +80,6 @@ class Person:
 class Starship:
 
     def __init__(self, starship_response):
-        print("Building starship. " + str(datetime.datetime.now().time()))
 
         self.name = starship_response["name"]
         self.model = starship_response["model"]
@@ -105,7 +102,6 @@ class Starship:
 class Vehicle:
 
     def __init__(self, vehicle_response):
-        print("Building vehicle. " + str(datetime.datetime.now().time()))
 
         self.name = vehicle_response["name"]
         self.model = vehicle_response["model"]
@@ -128,7 +124,6 @@ class Vehicle:
 class Species:
 
     def __init__(self, species_response):
-        print("Building species. " + str(datetime.datetime.now().time()))
 
         self.name = species_response["name"]
         self.classification = species_response["classification"]
@@ -150,7 +145,6 @@ class Species:
 class Planet:
 
     def __init__(self, planet_response):
-        print("Building planet. " + str(datetime.datetime.now().time()))
 
         self.name = planet_response["name"]
         self.diameter = planet_response["diameter"]

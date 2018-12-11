@@ -1,4 +1,3 @@
-import sys
 from starwars_api.StarSearch import StarSearch as Search
 from starwars_api.StarSearch import ObjectClasses
 from tkinter import *
@@ -291,7 +290,7 @@ list_box.pack()
 Label(rightmost_frame, text="SEARCH", font="bold", bd=4, relief=RIDGE, bg="black", fg="lightblue").pack()
 search_entry = Entry(searchfield_frame)
 search_entry.pack()
-pic_1 = PhotoImage(file="/home/kfiler/PycharmProjects/StarSearch/GUI Support/PNGs/luke-skywalker-force-awakens.png")
+pic_1 = PhotoImage(file="/home/kfiler/PycharmProjects/StarSearch/PNGs/luke-skywalker-force-awakens.png")
 Label(picture_frame, image=pic_1, height=424, width=424, bd=4,relief=RIDGE).pack()
 Label(details_frame, textvariable=detail_label_string, bg="black", fg="lightblue").pack()
 detail_list_box = Listbox(details_frame, font="DejaVu", height=15, width=45, bd=4, relief=RIDGE, bg="black", fg="white")
@@ -305,4 +304,4 @@ picture_frame.pack()
 details_frame.pack()
 rightmost_frame.pack(side=LEFT)
 
-root.ObjectClassesloop()
+root.mainloop()
