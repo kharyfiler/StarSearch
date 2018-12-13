@@ -56,7 +56,6 @@ class StarSearch:
         return complete_dict
 
     def get_all_resources(self, resource_index):
-        self.__init__()
         resource_objects = []
 
         def page_finder(index_num):
@@ -78,7 +77,6 @@ class StarSearch:
         return resource_objects
 
     def object_by_name(self, starship_name):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_starships_dict = self.get_all_resources(4)
         names = [entry["name"] for entry in all_starships_dict]
@@ -95,12 +93,10 @@ class StarSearch:
 
     # Films
     def create_film_object(self, film_dict):
-        self.__init__()
         film_object = ObjectClasses.Film(film_dict)
         return film_object
 
     def get_film_by_title(self, film_title):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_films_list = self.get_all_resources(0)
         titles = [entry["title"] for entry in all_films_list]
@@ -115,7 +111,6 @@ class StarSearch:
             return self.create_film_object(single_film_dict)
 
     def get_film_by_id(self, film_id):
-        self.__init__()
         single_film_dict = requests.get(ObjectClasses.base_url + "films/" + film_id + "/").json()
         if len(single_film_dict) == 1:
             single_film_dict = {"title": "No such film id."}
@@ -124,17 +119,14 @@ class StarSearch:
             return self.create_film_object(single_film_dict)
 
     def get_first_film(self):
-        self.__init__()
         return self.get_film_by_id("1")
 
     # People
     def create_person_object(self, person_dict):
-        self.__init__()
         person_object = ObjectClasses.Person(person_dict)
         return person_object
 
     def get_person_by_name(self, person_name):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_persons_dict = self.get_all_resources(1)
         names = [entry["name"] for entry in all_persons_dict]
@@ -149,7 +141,6 @@ class StarSearch:
             return self.create_person_object(single_person_dict)
 
     def get_person_by_id(self, person_id):
-        self.__init__()
         single_person_dict = requests.get(ObjectClasses.base_url + "people/" + person_id + "/").json()
         if len(single_person_dict) == 1:
             single_person_dict = {"name": "No such person id."}
@@ -158,17 +149,14 @@ class StarSearch:
             return self.create_person_object(single_person_dict)
 
     def get_first_person(self):
-        self.__init__()
         return self.get_person_by_id("1")
 
     # Planets
     def create_planet_object(self, planet_dict):
-        self.__init__()
         planet_object = ObjectClasses.Planet(planet_dict)
         return planet_object
 
     def get_planet_by_name(self, planet_name):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_planets_dict = self.get_all_resources(2)
         names = [entry["name"] for entry in all_planets_dict]
@@ -183,7 +171,6 @@ class StarSearch:
             return self.create_planet_object(single_planet_dict)
 
     def get_planet_by_id(self, planet_id):
-        self.__init__()
         single_planet_dict = requests.get(ObjectClasses.base_url + "planets/" + planet_id + "/").json()
         if len(single_planet_dict) == 1:
             single_planet_dict = {"name": "No such planet id."}
@@ -192,17 +179,14 @@ class StarSearch:
             return self.create_planet_object(single_planet_dict)
 
     def get_first_planet(self):
-        self.__init__()
         return self.get_planet_by_id("1")
 
     # Species
     def create_species_object(self, species_dict):
-        self.__init__()
         species_object = ObjectClasses.Species(species_dict)
         return species_object
 
     def get_species_by_name(self, species_name):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_species_dict = self.get_all_resources(3)
         names = [entry["name"] for entry in all_species_dict]
@@ -217,7 +201,6 @@ class StarSearch:
             return self.create_species_object(single_species_dict)
 
     def get_species_by_id(self, species_id):
-        self.__init__()
         single_species_dict = requests.get(ObjectClasses.base_url + "species/" + species_id + "/").json()
         if len(single_species_dict) == 1:
             single_species_dict = {"name": "No such species id."}
@@ -226,17 +209,14 @@ class StarSearch:
             return self.create_species_object(single_species_dict)
 
     def get_first_species(self):
-        self.__init__()
         return self.get_species_by_id("1")
 
     # Starships
     def create_starship_object(self, starship_dict):
-        self.__init__()
         starship_object = ObjectClasses.Starship(starship_dict)
         return starship_object
 
     def get_starship_by_name(self, starship_name):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_starships_dict = self.get_all_resources(4)
         names = [entry["name"] for entry in all_starships_dict]
@@ -251,7 +231,6 @@ class StarSearch:
             return self.create_starship_object(single_starship_dict)
 
     def get_starship_by_id(self, starship_id):
-        self.__init__()
         single_starship_dict = requests.get(ObjectClasses.base_url + "starships/" + starship_id + "/").json()
         if len(single_starship_dict) == 1:
             single_starship_dict = {"name": "No such starship id."}
@@ -260,17 +239,14 @@ class StarSearch:
             return self.create_starship_object(single_starship_dict)
 
     def get_first_starship(self):
-        self.__init__()
         return self.get_starship_by_id("2")
 
     # Vehicles
     def create_vehicle_object(self, vehicle_dict):
-        self.__init__()
         vehicle_object = ObjectClasses.Vehicle(vehicle_dict)
         return vehicle_object
 
     def get_vehicle_by_name(self, vehicle_name):
-        self.__init__()
         # todo: make resource categories avaialable via easy string call
         all_vehicles_dict = self.get_all_resources(5)
         names = [entry["name"] for entry in all_vehicles_dict]
@@ -285,7 +261,6 @@ class StarSearch:
             return self.create_vehicle_object(single_vehicle_name)
 
     def get_vehicle_by_id(self, vehicle_id):
-        self.__init__()
         single_vehicle_dict = requests.get(ObjectClasses.base_url + "vehicles/" + vehicle_id + "/").json()
         if len(single_vehicle_dict) == 1:
             single_vehicle_dict = {"name": "No such vehicle id."}
@@ -294,5 +269,4 @@ class StarSearch:
             return self.create_vehicle_object(single_vehicle_dict)
 
     def get_first_vehicle(self):
-        self.__init__()
         return self.get_vehicle_by_id("4")

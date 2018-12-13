@@ -1,6 +1,8 @@
 import pytest
 import starwars_api.StarSearch
 
+# flask server/service, react frontend, mongodb
+
 
 @pytest.fixture(scope='module')
 def api():

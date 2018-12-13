@@ -146,22 +146,22 @@ def fill_species(species_object):
 
 
 def fill_starship(starship_object):
-    detail_list_box.insert(END, "Model                 :" + str(starship_object.model))
-    detail_list_box.insert(END, "Class                 :" + str(starship_object.starship_class))
-    detail_list_box.insert(END, "Manufacturer          :" + str(starship_object.manufacturer))
-    detail_list_box.insert(END, "Cost (In Credits)     :" + str(starship_object.cost_in_credits))
-    detail_list_box.insert(END, "Length                :" + str(starship_object.length))
-    detail_list_box.insert(END, "Crew                  :" + str(starship_object.crew))
-    detail_list_box.insert(END, "Passengers            :" + str(starship_object.passengers))
-    detail_list_box.insert(END, "Max Atmosphering Speed:" + str(starship_object.max_atmosphering_speed))
-    detail_list_box.insert(END, "Hyperdrive Rating     :" + str(starship_object.hyperdrive_rating))
-    detail_list_box.insert(END, "MGLT                  :" + str(starship_object.MGLT))
-    detail_list_box.insert(END, "Cargo Capacity        :" + str(starship_object.cargo_capacity))
-    detail_list_box.insert(END, "Consumables           :" + str(starship_object.consumables))
+    detail_list_box.insert(END, "Model                 : " + str(starship_object.model))
+    detail_list_box.insert(END, "Class                 : " + str(starship_object.starship_class))
+    detail_list_box.insert(END, "Manufacturer          : " + str(starship_object.manufacturer))
+    detail_list_box.insert(END, "Cost (In Credits)     : " + str(starship_object.cost_in_credits))
+    detail_list_box.insert(END, "Length                : " + str(starship_object.length))
+    detail_list_box.insert(END, "Crew                  : " + str(starship_object.crew))
+    detail_list_box.insert(END, "Passengers            : " + str(starship_object.passengers))
+    detail_list_box.insert(END, "Max Atmosphering Speed: " + str(starship_object.max_atmosphering_speed))
+    detail_list_box.insert(END, "Hyperdrive Rating     : " + str(starship_object.hyperdrive_rating))
+    detail_list_box.insert(END, "MGLT                  : " + str(starship_object.MGLT))
+    detail_list_box.insert(END, "Cargo Capacity        : " + str(starship_object.cargo_capacity))
+    detail_list_box.insert(END, "Consumables           : " + str(starship_object.consumables))
     for film_url in starship_object.films:
-        detail_list_box.insert(END, "Films      :" + search.url_name_dict[film_url])
-    for person_url in starship_object.pilots:
-        detail_list_box.insert(END, "Pilots      :" + search.url_name_dict[person_url])
+        detail_list_box.insert(END, "Films      : " + search.url_name_dict[film_url])
+    for person_url2 in starship_object.pilots:
+        detail_list_box.insert(END, "Pilots      :" + search.url_name_dict[person_url2])
     detail_list_box.insert(END, "Created               :" + str(starship_object.created))
 
 
@@ -229,7 +229,7 @@ def close_program():
 class FilterButton:
 
     def buttonframe_packing(self, label_text):
-        button = Button(filterbar_frame, text=label_text, width=15, bd=2, relief=RAISED, bg="black", fg="lightblue")
+        button = Button(filterbar_frame, text=label_text, width=20, bd=2, relief=RAISED, bg="black", fg="lightblue")
         if label_text == "ALL":
             button.bind("<Button>", self.apply_all_button_filter)
         if label_text == "PEOPLE":
@@ -281,6 +281,7 @@ ObjectClasses_menu.add_cascade(label="File", menu=file_menu)
 file_menu.add_command(label="Quit", command=close_program)
 
 # Create frames
+invisible_frame = Frame(root)
 filterbar_frame = Frame(root, bg="black")
 list_box_frame = Frame(root)
 rightmost_frame = Frame(root)
@@ -302,28 +303,30 @@ header_label.pack(side=TOP, fill=X)
 
 # Fill Frames
 # ** Begin filterbar_frame **
-Label(filterbar_frame, text="ITEM FILTER", font="bold", width=25, bd=4, relief=RIDGE, bg="black",
-      fg="lightblue").grid(row=0)
+# Label(filterbar_frame, text="ITEM FILTER", font="bold", width=25, bd=4, relief=RIDGE, bg="black",
+#       fg="lightblue").grid(row=0)
 filter_app = FilteringApp()
-filter_app.set_filter_frame(filterbar_frame, 0, "films", 1, True)
-filter_app.set_filter_frame(filterbar_frame, 1, "people", 9, False)
-filter_app.set_filter_frame(filterbar_frame, 2, "planets", 5, False)
-filter_app.set_filter_frame(filterbar_frame, 3, "species", 4, False)
-filter_app.set_filter_frame(filterbar_frame, 4, "starships", 4, False)
-filter_app.set_filter_frame(filterbar_frame, 5, "vehicles", 4, False)
+filter_app.set_filter_frame(invisible_frame, 0, "films", 1, True)
+filter_app.set_filter_frame(invisible_frame, 1, "people", 9, False)
+filter_app.set_filter_frame(invisible_frame, 2, "planets", 5, False)
+filter_app.set_filter_frame(invisible_frame, 3, "species", 4, False)
+filter_app.set_filter_frame(invisible_frame, 4, "starships", 4, False)
+filter_app.set_filter_frame(invisible_frame, 5, "vehicles", 4, False)
 
-spacer_label = Label(filterbar_frame, width=25, height=14, bg="black").grid(row=13)
+top_spacer_label = Label(filterbar_frame, width=25, height=14, bg="black").grid(row=0)
 
-Label(filterbar_frame, text="CATEGORY FILTER", font="bold", width=25, bd=4, relief=RIDGE, bg="black",
-      fg="lightblue").grid(row=14)
+Label(filterbar_frame, text="CATEGORY FILTERS", font="bold", width=20, bd=4, relief=RIDGE, bg="black",
+      fg="lightblue").grid(row=1)
 button_app = FilterButton()
-button_app.buttonframe_packing("ALL").grid(row=15)
-button_app.buttonframe_packing("PEOPLE").grid(row=16)
-button_app.buttonframe_packing("FILMS").grid(row=17)
-button_app.buttonframe_packing("PLANETS").grid(row=18)
-button_app.buttonframe_packing("SPECIES").grid(row=19)
-button_app.buttonframe_packing("STARSHIPS").grid(row=20)
-button_app.buttonframe_packing("VEHICLES").grid(row=21)
+button_app.buttonframe_packing("ALL").grid(row=2)
+button_app.buttonframe_packing("PEOPLE").grid(row=3)
+button_app.buttonframe_packing("FILMS").grid(row=4)
+button_app.buttonframe_packing("PLANETS").grid(row=5)
+button_app.buttonframe_packing("SPECIES").grid(row=6)
+button_app.buttonframe_packing("STARSHIPS").grid(row=7)
+button_app.buttonframe_packing("VEHICLES").grid(row=8)
+
+bottom_spacer_label = Label(filterbar_frame, width=25, height=24, bg="black").grid(row=9)
 # ** End filterbar_frame **
 
 # ** list_box_frame **

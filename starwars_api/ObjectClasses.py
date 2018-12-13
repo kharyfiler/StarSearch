@@ -11,27 +11,6 @@ vehicle_pages = 4
 
 categories = ["films", "people", "planets", "species", "starships", "vehicles"]
 
-film_attributes = ["title", "episode_id", "opening_crawl", "director", "producer", "release_date", "species",
-                   "starships", "vehicles", "characters", "planets", "url", "created", "edited"]
-
-person_attributes = ["name", "birth_year", "eye_color", "gender", "hair_color", "height", "mass", "skin_color",
-                     "homeworld", "films", "species", "starships", "vehicles", "url", "created", "edited"]
-
-starship_attributes = ["name", "model", "starship_class", "manufacturer", "cost_in_credits", "length", "crew",
-                       "passengers", "max_atmosphering_speed", "hyperdrive_rating", "MGLT", "cargo_capacity",
-                       "consumables", "films", "pilots", "url", "created", "edited"]
-
-vehicle_attributes = ["name", "model", "vehicle_class", "manufacturer", "length", "cost_in_credits", "crew",
-                      "passengers", "max_atmosphering_speed", "cargo_capacity", "consumables", "films", "pilots", "url",
-                      "created", "edited"]
-
-species_attributes = ["name", "classification", "designation", "average_height", "average_lifespan", "eye_colors",
-                      "hair_colors", "skin_colors", "language", "homeworld", "people", "films", "url", "created",
-                      "edited"]
-
-planet_attributes = ["name", "diameter", "rotation_period", "orbital_period", "gravity", "population", "climate",
-                     "terrain", "surface_water", "residents", "films", "url", "created", "edited"]
-
 
 # todo: pass the response into the class object as a parameter
 class Film:
@@ -69,7 +48,6 @@ class Person:
         self.homeworld = person_response["homeworld"]
         self.films = person_response["films"]
         self.species = person_response["species"]
-        # long list comp example : ",".join([starship["name"] for starship in [requests.get(starships_request).json() for starships_request in starships]])
         self.starships = person_response["starships"]
         self.vehicles = person_response["vehicles"]
         self.url = person_response["url"]
@@ -88,6 +66,8 @@ class Starship:
         self.cost_in_credits = starship_response["cost_in_credits"]
         self.length = starship_response["length"]
         self.crew = starship_response["crew"]
+        self.passengers = starship_response["passengers"]
+        self.max_atmosphering_speed = starship_response["max_atmosphering_speed"]
         self.hyperdrive_rating = starship_response["hyperdrive_rating"]
         self.MGLT = starship_response["MGLT"]
         self.cargo_capacity = starship_response["cargo_capacity"]
